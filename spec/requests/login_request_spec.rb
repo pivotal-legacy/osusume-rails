@@ -1,23 +1,30 @@
 require 'rails_helper'
 
-RSpec.describe "login", type: :request do
-    it "returns token after successful login" do
-        user = User.create!(name: "danny", password: "password", password_confirmation: "password")
-        post "/login", name: "danny", password: "password"
+RSpec.describe 'login', type: :request do
+  it 'returns token after successful login' do
+    User.create!(
+      name: 'danny',
+      password: 'password',
+      password_confirmation: 'password'
+    )
 
-        json = JSON.parse(response.body)
+    post '/login', name: 'danny', password: 'password'
 
-        expect(response).to be_success
-        expect(json['token']).to match("danny")
-    end
+    json = JSON.parse(response.body)
 
-    it "returns fail if user is not valid" do
-        user = User.create!(name: "danny", password: "password", password_confirmation: "password")
-        post "/login", name: "danny", password: "wrong"
+    expect(response).to be_success
+    expect(json['token']).to match('danny')
+  end
 
-        
-        json = JSON.parse(response.body)
-        expect(response).to have_http_status(401)
-    end
+  it 'returns fail if user is not valid' do
+    User.create!(
+      name: 'danny',
+      password: 'password',
+      password_confirmation: 'password'
+    )
 
+    post '/login', name: 'danny', password: 'wrong'
+
+    expect(response).to have_http_status(401)
+  end
 end
