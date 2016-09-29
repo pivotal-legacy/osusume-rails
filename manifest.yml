@@ -7,4 +7,4 @@ applications:
   path: .
   command: bundle exec rails db:migrate && bundle exec rails s -p $PORT
   services:
-    - rails-postgres
+    - osusume-rails-postgres
