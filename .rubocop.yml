@@ -11,3 +11,5 @@ AllCops:
     - 'spec/spec_helper.rb'
 Documentation:
   Enabled: false
+Metrics/LineLength:
+  Max: 100
