@@ -1,10 +1,10 @@
 ---
 applications:
-- name: osusume-rails
+- name: osusume_lunch_rails
   random-route: true
   memory: 256M
   instances: 1
   path: .
   command: bundle exec rails db:migrate && bundle exec rails s -p $PORT
   services:
-    - osusume-rails-postgres
+    - osusume_lunch_rails_postgres
